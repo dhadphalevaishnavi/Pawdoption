@@ -17,6 +17,7 @@ import { FooterComponent } from './Components/footer/footer/footer.component';
 import { SearchResultComponent } from './Components/search-result/search-result.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
+import { AddPetSidebarComponent } from './Components/add-pet-sidebar/add-pet-sidebar.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SidebarComponent } from './Components/sidebar/sidebar.component';
     FooterComponent,
     SearchResultComponent,
     SidebarComponent,
+    AddPetSidebarComponent,
     
   ],
   imports: [

@@ -7,6 +7,8 @@ import { RegistrationComponent } from './Components/registration/registration.co
 import { VerifyOTPComponent } from './Components/verify-otp/verify-otp.component';
 import { AddPetComponent } from './Components/addPet/add-pet/add-pet.component';
 import { SearchResultComponent } from './Components/search-result/search-result.component';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
+import { AddPetSidebarComponent } from './Components/add-pet-sidebar/add-pet-sidebar.component';
 
 
 const routes: Routes = [
@@ -37,18 +39,18 @@ const routes: Routes = [
 
   {
     path:"questionForm",
-    component:QuestionsComponent
+    component:SidebarComponent
   },
 
   {
     path:"addPet",
-    component:AddPetComponent
+    component:AddPetSidebarComponent
   },
 
   {
     path:'showPets',
     component:SearchResultComponent
-  }
+  },
 
 
 ];

@@ -1,13 +1,17 @@
 .card{
 
-    margin-top: 150px;
-    margin-left: 350px;
-
+    margin-top: 50px;
+    margin-left: 220px;
+    margin-bottom: 50px;
+      
     width:800px;
 
-    background-color: rgba(255, 248, 220, 0.918);
+    /* background-color: rgba(255, 248, 220, 0.918); */
+    background: #fafafa;
     border-radius: 25px;
 }
+
+
 
 .form-select{
     margin-left: 20px;

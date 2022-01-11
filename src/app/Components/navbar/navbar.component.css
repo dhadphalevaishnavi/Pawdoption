@@ -2,7 +2,20 @@
 .span{
     
     text-shadow: burlywood;
-    color: rgb(85, 81, 81);
+    /* color: rgb(85, 81, 81); */
+    color:whitesmoke
+}
+
+.btn-deep-orange
+{
+  background-color: #ff7043;
+  color:whitesmoke
+}
+
+.btn-light-green
+{
+  background-color:#8bc34a;
+  color:whitesmoke
 }
 
 button span {
@@ -31,7 +44,9 @@ button span {
 }
 
 .navbar{
-    background-color: rgb(29, 161, 155);
+    
+    background-color: #101531  ;
+    /* rgb(29, 161, 155); */
     position: fixed;
     width: 100%;
     top: 0;

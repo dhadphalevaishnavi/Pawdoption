@@ -3,8 +3,8 @@
    
       
     <div class="icon">
-      <Img class="span" src="../../../assets/hiclipart.com (4).png" >
-      <a class="span h3" [routerLink]="['']">Pawdoption</a>
+      <Img class="span" src="../../../assets/logo2.png" >
+      <a class="span h3" [routerLink]="['']"> Pawdoption</a>
      </div>   
       <form class="d-flex" (ngSubmit)="searchPetByType()">
         <select class="form-select form-select-lg mb-6" aria-label=".form-select-lg example" name="petType" [(ngModel)]="petType" >
@@ -20,8 +20,12 @@
       </form>
 
       <div class="contain">
-        <a [routerLink]="['/Login']" class="btn btn-outline-secondary">Login</a>
-        <a [routerLink]="['/sendOTP']" class="btn btn-outline-secondary">Sign-Up</a>
+        <!-- <a [routerLink]="['/Login']" class="btn btn-outline-secondary">Login</a>
+        <a [routerLink]="['/sendOTP']" class="btn btn-outline-secondary">Sign-Up</a> -->
+        <a [routerLink]="['/Login']" class="btn btn-light-green">Login</a>
+        <a [routerLink]="['/sendOTP']" class="btn btn-deep-orange">Sign-Up</a>
+      
+
         
       </div>
 
@@ -73,7 +77,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/addPet']">My Requests</a>
+              <a class="nav-link" [routerLink]="['/addPet']" routerLinkActive="active">My Requests</a>
             </li>
 
             <li class="nav-item">

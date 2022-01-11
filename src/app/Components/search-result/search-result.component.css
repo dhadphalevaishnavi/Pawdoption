@@ -63,7 +63,8 @@
     
 }
 .pagination ::ng-deep .ngx-pagination .current {
-    background: rgb(29, 161, 155);
+    background: #101531  ;
+    
    
 }
 

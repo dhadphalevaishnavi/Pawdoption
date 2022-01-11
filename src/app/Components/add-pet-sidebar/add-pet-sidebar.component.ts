@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  selector: 'app-add-pet-sidebar',
+  templateUrl: './add-pet-sidebar.component.html',
+  styleUrls: ['./add-pet-sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class AddPetSidebarComponent implements OnInit {
 
   username:string | null;
-
   constructor() { }
 
   ngOnInit(): void {
