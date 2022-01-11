@@ -1,0 +1,41 @@
+<div class="container">
+
+    <div *ngIf="totalRecords == 0">
+        <h1>Sorry no results found...</h1>
+    </div>
+ 
+    <div *ngIf="totalRecords != 0"> 
+    <div class="card-deck " *ngFor="let petObject of pet | paginate :{id:'listing_pagination', itemsPerPage:2 , currentPage:page , totalItems:totalRecords}">
+
+
+        <div class="card">
+            <img src="../../../assets/cat2.jfif " class="card-img-top" alt="Image will be displayed over here">
+            <!-- <button class="btn btn-primary" >Interested</button> -->
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title h4">{{petObject.petName}}</h5>
+                <p class="card-text h6">{{petObject.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item list-item-one h6">Breed : {{petObject.bread}}</li>
+                <li class="list-group-item list-item-two h6">Gender : {{petObject.gender}}</li>
+                <li class="list-group-item list-item-one h6">Age : {{petObject.ageYears}} Year {{petObject.ageMonths}} Month</li>
+                <li class="list-group-item list-item-two h6">Color : {{petObject.color}}</li>
+                <li class="list-group-item list-item-one h6">City : {{petObject.petCity}}</li>
+            </ul>
+            <button class="btn btn-primary" (click)="sendEnquaryMail(petObject)" >Send Enquiery </button>
+           
+        </div>
+
+    </div>
+</div>
+   
+
+</div>
+
+<div class="pageContainer" *ngIf="totalRecords != 0">
+    <pagination-controls class="pagination pagination-lg" id="listing_pagination"   (pageChange)="page = $event"></pagination-controls>
+</div>
+<!-- style="width: 28rem;" -->

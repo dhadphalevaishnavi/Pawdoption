@@ -1,0 +1,126 @@
+<div class="card">
+<h1> Update Profile  </h1>
+<form class="formClass" (ngSubmit)="noteAnswers()">
+  
+ 
+    <div class="form-group" >
+        <label for="question1" class="h6">1] Who are you planing to adopt pet for?</label>
+
+        <div class="radio" id="question1" required>
+            <label><input type="radio" name="question1" value="Me" [(ngModel)]="question.petIsFor">Me</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question1" value="My Family" [(ngModel)]="question.petIsFor">My Family</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question1" value="Someone else" [(ngModel)]="question.petIsFor">Someone else</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="question2" class="h6">2] Who will be the primary caregiver for pet?</label>
+        <div class="radio" id="question1" required>
+            <label><input type="radio" name="question2"  value="Me" [(ngModel)]="question.caregiver">Me</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question2" value="My Family" [(ngModel)]="question.caregiver">My Family</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question2" value="Someone else" [(ngModel)]="question.caregiver">Someone else</label>
+        </div>
+    </div>
+
+      <div class="form-group">
+        <label for="question3" class="h6">3] Any pet allergies in the family the pet is being adopted into?</label>
+        <div class="radio" id="question1" required>
+            <label><input type="radio" name="question3" value="Yes"  [(ngModel)]="question.isAlargic">Yes</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question3" value="No"  [(ngModel)]="question.isAlargic">No</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="question4" class="h6"> 4] How many pets did the family had before?</label>
+        <div class="radio" id="question1" required>
+            <label><input type="radio" name="question4" value="None"  [(ngModel)]="question.noOfPetsOwnedBefore">None</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question4" value="1"  [(ngModel)]="question.noOfPetsOwnedBefore">1</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question4" value="2"  [(ngModel)]="question.noOfPetsOwnedBefore">2</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question4" value="More than 2"  [(ngModel)]="question.noOfPetsOwnedBefore">More than 2</label>
+        </div>
+        
+      </div>
+
+      <div class="form-group">
+        <label for="question5" class="h6">5] How far is the Vet Clinic from the house the pet will be kept in?</label>
+        <div class="radio" id="question1" required>
+            <label><input type="radio" name="question5" value="Less than 3 km"  [(ngModel)]="question.vetDistance">less than 3 Km</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question5" value="4-7 km"  [(ngModel)]="question.vetDistance">4-7 Km</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question5" value="8-10 km"  [(ngModel)]="question.vetDistance">8-10 Km</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question5" value="More than 10 Km"  [(ngModel)]="question.vetDistance">More than 10 Km</label>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="question6" class="h6">6] Where will pet stay during day?</label>
+        <div class="radio" id="question1" required>
+            <label><input type="radio" name="question6" value="Indoors"  [(ngModel)]="question.dayStaying">Indoors</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question6" value="Indoors (cage / crate)"  [(ngModel)]="question.dayStaying">Indoors (cage / crate)</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question6" value="Free-roaming"  [(ngModel)]="question.dayStaying">Free-roaming</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question6" value="Garage/Fenced yard"  [(ngModel)]="question.dayStaying">Garage/Fenced yard</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="question7" class="h6">7] Where will pet sleep at night?</label>
+        <div class="radio" id="question1" required>
+            <label><input type="radio" name="question7" value="Indoors"  [(ngModel)]="question.nightStaying">Indoors</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question7" value="Indoors (cage / crate)"  [(ngModel)]="question.nightStaying">Indoors (cage / crate)</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="question7" value="Garage/Fenced yard"  [(ngModel)]="question.nightStaying">Garage/Fenced yard</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="question8" class="h6">8] You are looking for pet in which City?</label>
+        <!-- <input type="text" class="form-control" id="cityName" name="question8" [(ngModel)]="question.city" required> -->
+        <select class="form-select form-select-lg mb-6" aria-label=".form-select-lg example" name="city" [(ngModel)]="question.city">
+            <option selected disabled>Select City </option>
+            <option value="pune">Pune</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="satara">Satara</option>
+            <option value="sangli">Sangli</option>
+            <option value="kolhapur">Kolhapur</option>
+            <option value="solapur">Solapur</option>
+            <option value="nashik">Nashik</option>
+    
+          </select>  
+      </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+</div>
+

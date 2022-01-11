@@ -1,0 +1,50 @@
+.card{
+
+    margin-top: 150px;
+    margin-left: 350px;
+
+    width:800px;
+
+    background-color: rgba(255, 248, 220, 0.918);
+    border-radius: 25px;
+}
+
+.form-select{
+    margin-left: 20px;
+    width: 300px;
+    border-radius: 5px;
+    height: 40px;
+    
+}
+
+.form-control{
+    width:250px;
+    margin-left: 30px;
+    border-radius: 25px;
+}
+
+.formClass{
+    /* padding-top: 50px; */
+    padding-left: 50px;
+
+    /* margin-top: 50px; */
+
+}
+
+.form-group {
+    margin-top: 70px;
+    /* text-align: center; */
+
+}
+
+.btn{
+    margin-top: 70px;
+    margin-bottom: 70px;
+    margin-left: 290px;
+    
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}

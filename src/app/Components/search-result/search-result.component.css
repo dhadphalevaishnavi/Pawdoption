@@ -1,0 +1,77 @@
+.card{
+    margin-top: 70px;
+    
+    margin-inline: 0px;
+   
+    background-color:  rgba(146, 34, 34, 0.301);
+    
+    border-radius: 80px;
+    
+}
+
+.card-deck{
+    width:900px;
+    margin-left: 100px;
+  
+}
+
+.btn{
+    width: 250px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-self: center;
+}
+
+.list-group-item{
+    width: 400px;
+    align-self: center;
+}
+.list-item-one{
+    margin-top: 3px;
+    border-radius: 20px;
+    background-color:rgba(175, 201, 241);
+}
+
+.list-item-two{
+    margin-top: 3px;
+    border-radius: 20px;
+    background-color: rgb(231, 235, 181);
+}
+
+.container{
+    margin-top: 100px;
+  
+    align-self: center;
+}
+
+.card-img-top{
+   
+    /* max-height: 450px;
+    max-width: 450px; */
+    height: 451px;
+    width: 450px;
+    align-self: center;
+    border-radius: 80px;
+        
+}
+
+.pageContainer{
+    
+    margin-top: 50px;
+    margin-left: 550px;
+  
+    
+}
+.pagination ::ng-deep .ngx-pagination .current {
+    background: rgb(29, 161, 155);
+   
+}
+
+.h4{
+    text-align:center;
+}
+
+h1{
+    margin-top: 213px;
+    text-align: center;
+}

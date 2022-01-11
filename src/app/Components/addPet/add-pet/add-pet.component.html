@@ -1,0 +1,130 @@
+<div class="card">
+<h1> Pet Information</h1>
+    <form (ngSubmit)="addPet()">
+
+      <div class="form-inline">
+        <div class="form-group " >
+          <label  class="h5 " >Pet Name</label>
+          <input type="text"  class=" form-control petName" placeholder="Pet Name" name="petName" [(ngModel)]="pet.petName">
+        </div>
+      </div>
+
+        <div class="form-group">
+            <label for="question8" class="h5">Pet Location / City</label>
+              <select class="form-select form-select-lg mb-6" aria-label=".form-select-lg example" name="petCity"[(ngModel)]="pet.petCity" >
+                <option disabled selected>Select City </option>
+                <option value="Pune">Pune</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Satara">Satara</option>
+                <option value="Sangli">Sangli</option>
+                <option value="Kolhapur">Kolhapur</option>
+                <option value="Solapur">Solapur</option>
+                <option value="Nashik">Nashik</option>
+        
+              </select>  
+        </div>
+
+        <div class="form-group">
+            <label class="h5">Pet Type</label>
+            <select class="form-select form-select-lg mb-6" aria-label=".form-select-lg example" name="petType" [(ngModel)]="pet.petType">
+            <option disabled selected >Select Pet Type </option>
+            <option value="Dog">Dog</option>
+            <option value="Cat" >Cat</option>
+            <option value="Bird">Bird</option>
+            <option value="Hamster">Hamster</option>
+            <option value="Rabbit" >Rabbit</option>
+            <option value="Guinea Pig">Guinea Pig</option>
+            </select>
+         </div>
+
+         <div class="form-inline">
+         <div class="form-group">
+            <label  class="h5">Breed</label>
+            <input class="form-control petName" type="text" placeholder="Pet Breed" name="bread" [(ngModel)]="pet.bread" >
+         </div>
+        </div>
+
+         <div class="form-group">
+            <label class="h5">Gender</label>
+            <label class="gender h6"><input type="radio" name="gender" value="male"  [(ngModel)]="pet.gender">Male</label>
+            <label class="gender h6"><input type="radio" name="gender" value="female" [(ngModel)]="pet.gender" >Female</label>
+         </div>
+
+         <div class="form-group">
+            <label  class="h5">Age</label>
+
+            <label class="lab" for="years">Years : </label>
+              <select class="form-select  mb-6 labSelect" aria-label=".form-select-lg example" name="ageYears" [(ngModel)]="pet.ageYears" >
+                <option selected disabled>Years </option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+              </select>
+
+              <label class="lab" for="months">Months : </label>
+              <select class="form-select  mb-6 labSelect" aria-label=".form-select-lg example" id="months" name="ageMonths" [(ngModel)]="pet.ageMonths" >
+                <option selected disabled>Months </option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11" >11</option>
+              </select>
+         </div>
+
+         <div class="form-inline">
+         <div class="form-group">
+            <label  class="h5">Color</label>
+            <input class=" petName form-control"  type="text" placeholder="Pet Color" name="color" [(ngModel)]="pet.color">
+         </div>
+        </div>
+
+         
+         <div class="form-group">
+          <label class="h5">Pet description</label>
+          <textarea maxlength="150" class="form-control description" id="textarea" rows="3" placeholder="Write brief description (maximum 150 characters allowed)" name="description" [(ngModel)]="pet.description"></textarea>
+        </div>
+      
+
+        
+         
+    
+
+
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+
+
+
+</div>
