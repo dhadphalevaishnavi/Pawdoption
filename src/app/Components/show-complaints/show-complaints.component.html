@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <h2 class="heading"> {{username}}'s Complaints </h2>
+
+  </div>
+</nav>
+
+<div class="container">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Complaint Id</th>
+        <th scope="col">Catagory</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let complaint of complaints">
+      <tr>
+        <td scope="row">{{complaint.complaintId}}</td>
+        <td>{{complaint.catagory}}</td>
+        <td>{{complaint.description}}</td>
+        <td>{{complaint.status}}</td>
+        <td>
+          <div class="btn-dropdown">
+
+            <button class="btn btn-primary btn1" (click)="editComplaint(complaint)">Edit </button>
+
+            <button type="button" class="btn btn-primary btn2" data-toggle="modal" data-target="#exampleModalCenter" >
+              Delete
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Delete Complaint</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    By clicking YES this complaint will be deleted.
+                    Are you sure you want to Delete this Complaint ?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                      (click)="deleteComplaint(complaint)">Yes</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+
+
+
+
+
+</div>

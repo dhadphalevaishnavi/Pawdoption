@@ -4,6 +4,8 @@ import { RegistrationClass } from 'src/app/Classes/registration/registration-cla
 import { registerLocaleData } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Pet } from 'src/app/Classes/pet/pet';
+import { UserLogin } from 'src/app/Classes/login/user-login';
+import { LoginDataService } from '../login/login-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +34,9 @@ export class RegistrationService {
     return this.http.post(`${this.baseUrl}/sendProfileMail/${sessionStorage.getItem('loggedUserEmail')}`,petData , {responseType: 'text'});
   }
  
+  resetPassword(loginData:LoginDataService):Observable<any>
+  {
+    return this.http.put(`${this.baseUrl}/resetPassword`,loginData ,{responseType: 'text'});
+  }
+
 }

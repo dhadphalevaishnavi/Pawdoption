@@ -9,7 +9,8 @@ import { AddPetComponent } from './Components/addPet/add-pet/add-pet.component';
 import { SearchResultComponent } from './Components/search-result/search-result.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { AddPetSidebarComponent } from './Components/add-pet-sidebar/add-pet-sidebar.component';
-
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { ComplaintComponent } from './Components/complaint/complaint.component';
 
 const routes: Routes = [
 
@@ -51,6 +52,16 @@ const routes: Routes = [
     path:'showPets',
     component:SearchResultComponent
   },
+
+  {
+    path:'reset-Password',
+    component:ResetPasswordComponent
+  },
+
+  {
+    path:'complaintForm',
+    component:ComplaintComponent
+  }
 
 
 ];

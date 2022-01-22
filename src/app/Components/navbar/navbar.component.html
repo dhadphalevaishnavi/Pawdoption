@@ -33,61 +33,49 @@
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" *ngIf="isLoggedIn != null">
           <span class="navbar-toggler-icon">
             
-          </span>
+          </span> 
        </button>
 
-       <!-- <div class="sidebar" *ngIf="isLoggedIn != null">
-        <ul class="navbar-nav">
-            
-          <li class="nav-item">
-            <a class="nav-link" href="#">My Dashboard</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/questionForm']" routerLinkActive="active">Edit My Profile</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/addPet']">My Requests</a>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">My Complaints</a>
-          </li>
-         
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['']" (click)="logout()">LogOut</a>
-          </li>
 
-        </ul>
-        </div> -->
-
-       <!-- </button> -->
-
-        <div class="collapse navbar-collapse" id="navbar-list-4" *ngIf="isLoggedIn != null">
+        <div class="collapse navbar-collapse" id="navbar-list-4" *ngIf="isLoggedIn != null"> 
   
           <ul class="navbar-nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="#">My Dashboard</a>
+              <a class="nav-link "data-toggle="collapse" data-target="#navbar-list-4" (click)="setComponentToshow('')" style="cursor: pointer;" >My Dashboard</a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" data-target="#navbar-list-4"  [routerLink]="['']" (click)="logout()">LogOut</a>
+            </li> 
+            
+            <!-- <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" data-target="#navbar-list-4" (click)="setComponentToshow('questionForm')">Edit My Profile</a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/questionForm']" routerLinkActive="active">Edit My Profile</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/addPet']" routerLinkActive="active">My Requests</a>
+              <a class="nav-link" data-toggle="collapse" data-target="#navbar-list-4" (click)="setComponentToshow('showMyProfile')"> My Profile</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">My Complaints</a>
-            </li>
-           
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['']" (click)="logout()">LogOut</a>
+              <a class="nav-link" data-toggle="collapse" data-target="#navbar-list-4" (click)="setComponentToshow('addPetForm')">Add New Pet</a>
             </li>
 
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" data-target="#navbar-list-4" (click)="setComponentToshow('showMyPets')">Show My Pets</a>
+            </li>
+ 
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" data-target="#navbar-list-4" (click)="setComponentToshow('showWishList')">My Wish-List</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" data-target="#navbar-list-4" (click)="setComponentToshow('showMycomplaints')">My Complaints</a>
+            </li>
+          -->
+ 
+ 
           </ul>
  
         </div>

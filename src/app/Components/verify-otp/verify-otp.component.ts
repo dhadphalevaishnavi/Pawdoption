@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PassRegistrationDataService } from 'src/app/Services/registration/pass-registration-data.service';
 import { RegistrationClass } from 'src/app/Classes/registration/registration-class';
 import { Router } from '@angular/router';
@@ -11,40 +11,49 @@ import { RegistrationService } from 'src/app/Services/registration/registration.
 })
 export class VerifyOTPComponent implements OnInit {
 
-  otp:String;
-  registrationClassObject:RegistrationClass;
+  otp: String;
+  registrationClassObject: RegistrationClass;
 
-  otpVar:String;
+  otpVar: String;
 
-  constructor(private passData:PassRegistrationDataService , private router:Router ,private registrationService:RegistrationService) { }
+  constructor(private passData: PassRegistrationDataService, private router: Router, private registrationService: RegistrationService) { }
 
   ngOnInit(): void {
-  
-    this.registrationClassObject=this.passData.getRegistrationClassObject();
-    this.otp=this.passData.getOtp();
-    
-  } 
 
-  register()
-  {
+    this.registrationClassObject = this.passData.getRegistrationClassObject();
+    this.otp = this.passData.getOtp();
 
-    if(this.otpVar==this.otp)
-    {
+  }
+
+  register() {
+
+    if (this.otpVar == this.otp) {
       console.log("OTP Matched");
-      
-      //Register Into Database
-      this.registrationService.RegisterNewUser(this.registrationClassObject).subscribe(
-        data=>{
-         
-          this.router.navigate(['']);
-        },
-        error=>{
-          console.log("Something went wrong");
-        }
-  
-       );
+      //check if forgot password?
+      if (sessionStorage.getItem("forgotPassword") == "true") {
 
-     
+        this.router.navigate(['/reset-Password']);
+
+      }
+
+      else {
+        //Register Into Database
+        this.registrationService.RegisterNewUser(this.registrationClassObject).subscribe(
+          data => {
+
+            this.router.navigate(['']);
+          },
+          error => {
+            console.log("Something went wrong");
+          }
+
+        );
+      }
+
+    }
+
+    else{
+      console.log("otp not matched");
     }
 
 

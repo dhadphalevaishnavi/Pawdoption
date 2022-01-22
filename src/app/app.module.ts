@@ -18,6 +18,13 @@ import { SearchResultComponent } from './Components/search-result/search-result.
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { AddPetSidebarComponent } from './Components/add-pet-sidebar/add-pet-sidebar.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { ComplaintComponent } from './Components/complaint/complaint.component';
+import { ComplaintFormComponent } from './Components/complaint-form/complaint-form.component';
+import { ShowProfileComponent } from './Components/show-profile/show-profile.component';
+import { WishListComponent } from './Components/wish-list/wish-list.component';
+import { ShowComplaintsComponent } from './Components/show-complaints/show-complaints.component';
+import { ShowMyAddedPetsComponent } from './Components/show-my-added-pets/show-my-added-pets.component';
 
 
 @NgModule({
@@ -34,6 +41,13 @@ import { AddPetSidebarComponent } from './Components/add-pet-sidebar/add-pet-sid
     SearchResultComponent,
     SidebarComponent,
     AddPetSidebarComponent,
+    ResetPasswordComponent,
+    ComplaintComponent,
+    ComplaintFormComponent,
+    ShowProfileComponent,
+    WishListComponent,
+    ShowComplaintsComponent,
+    ShowMyAddedPetsComponent,
     
   ],
   imports: [
@@ -44,6 +58,12 @@ import { AddPetSidebarComponent } from './Components/add-pet-sidebar/add-pet-sid
     HttpClientModule,
     NgxPaginationModule
     
+  ],
+  entryComponents:[
+    ComplaintFormComponent,
+    AddPetComponent,
+    QuestionsComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]

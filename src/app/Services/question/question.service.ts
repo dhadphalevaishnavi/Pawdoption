@@ -32,6 +32,10 @@ export class QuestionService {
     return this.http.get(`${this.baseUrl}/searchQuestionExists/${sessionStorage.getItem("loggedUserId")}`);
   }
 
+  findUserProfile ( ):Observable<any>
+  {
 
+    return this.http.get(`${this.baseUrl}/findUserProfile/${sessionStorage.getItem("loggedUserId")}`);
+  }
 
 }

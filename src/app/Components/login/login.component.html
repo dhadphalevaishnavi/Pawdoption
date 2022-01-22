@@ -1,7 +1,10 @@
 <html>
 
+
 <body class="imageHolder">
 
+    <div class="mask flex-center rgba-green-strong">
+     
 
     <div class="mycontainer">
 
@@ -15,7 +18,7 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" name="email"
-                        [(ngModel)]="userLoginClassObject.email" aria-describedby="emailHelp" placeholder="Enter email"
+                        [(ngModel)]="userLoginClassObject.email" [(ngModel)]="registrationData.email" aria-describedby="emailHelp" placeholder="Enter email"
                         required="true">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
@@ -29,18 +32,23 @@
 
                 <div class="form-check">
 
-                    <a [routerLink]="['/verifyOtp']">Forgot Password?</a>
+                    <a [routerLink]="['/Login']" (click)="forgotPassword()" >Forgot Password?</a>
+                </div>
+
+                <div class="spinner-border text-primary" role="status" *ngIf="activateSpinner"> 
+                    <span class="sr-only">Loading...</span>
                 </div>
                 
                 <div class="button-container">
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
-            </form>
+            </form> 
 
         </div>
 
     </div>
 
+</div>
 </body>
 
 </html>

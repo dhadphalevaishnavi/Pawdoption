@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+  
+        <h2 class="heading"> {{username}}'s Profile </h2>
+      
+    </div>
+  </nav> 
+  
+  <div class="card">
+      <!-- <h1> Pet Information</h1> -->
+       <div class="card1">  
+         <label class="h5"> User Name : {{username}}</label>   
+         <label class="h5"> City : {{question.city}}</label>  
+         <label class="h5"> Looking Pet for : {{question.petIsFor}}</label>  
+         <label class="h5"> Caregiver of pet is : {{question.caregiver}}</label>   
+         <label class="h5"> Someone Alergic to pet in family : {{question.isAlargic}}</label>  
+         <label class="h5"> Number of Pets owned before : {{question.noOfPetsOwnedBefore}}</label>  
+         <label class="h5"> Distance to Vet clinic : {{question.vetDistance}}</label>  
+         <label class="h5"> Willing to keep pet during day : {{question.dayStaying}}</label>  
+         <label class="h5">  Willing to keep pet during night : {{question.nightStaying}}</label>  
+        </div>      
+           
+        <button class="btn btn-primary"  (click)="setComponentToshow('questionForm')">Edit Profile</button>
+         
+      
+      
+      
+      </div>
+      

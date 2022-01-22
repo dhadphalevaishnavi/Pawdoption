@@ -25,7 +25,19 @@
                 <li class="list-group-item list-item-two h6">Color : {{petObject.color}}</li>
                 <li class="list-group-item list-item-one h6">City : {{petObject.petCity}}</li>
             </ul>
-            <button class="btn btn-primary" (click)="sendEnquaryMail(petObject)" >Send Enquiery </button>
+
+            <div class="btn-dropdown">
+            <button class="btn btn-primary" (click)="sendEnquaryMail(petObject)" >Send Enquiery </button> 
+
+            
+            <span class="h2 dropdown" id="dropdownMenuButton" data-toggle="dropdown" style="cursor: pointer;" *ngIf="isLoggedIn != null">
+                  ...
+            </span>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" (click)="addNewWish(petObject)" style="cursor: pointer;">Add to Wish List</a>
+                  <a class="dropdown-item" (click)="setComponentToshow('complaintsForm')" style="cursor: pointer;">Raise a Complaint</a>
+                </div>
+            </div>   
            
         </div>
 

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
 
    registrationData =new RegistrationClass();
-
+ 
  
  
   constructor(private registrationService:RegistrationService , private router:Router , private passData:PassRegistrationDataService) { }

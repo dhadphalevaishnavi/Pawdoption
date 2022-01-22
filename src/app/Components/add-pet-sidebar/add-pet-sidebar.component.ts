@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-pet-sidebar.component.css']
 })
 export class AddPetSidebarComponent implements OnInit {
-
+ 
   username:string | null;
   constructor() { }
 

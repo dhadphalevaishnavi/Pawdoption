@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PetService } from 'src/app/Services/pet/pet.service';
 import { PassSearchResultService } from 'src/app/Services/passSearchResult/pass-search-result.service';
 import { Router } from '@angular/router';
+import { ChangeComponentService } from 'src/app/Services/changeComponent/change-component.service';
 
 
 @Component({
@@ -10,14 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  public isCollapsed = true;  
+ 
 
   public petType:string;
 
   public isLoggedIn:string | null ;
   
 
-  constructor(private pet:PetService , private router:Router , private passSearchResultService:PassSearchResultService) {
+  constructor(private pet:PetService , private router:Router , private passSearchResultService:PassSearchResultService ,private changeComponentService:ChangeComponentService) {
     this.router.routeReuseStrategy.shouldReuseRoute= () =>false; 
 
    
@@ -25,7 +26,7 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.isLoggedIn = sessionStorage.getItem("loggedUserId");
+    this.isLoggedIn = sessionStorage.getItem("loggedUserId"); 
   }
 
   searchPetByType()
@@ -49,14 +50,25 @@ export class NavbarComponent implements OnInit {
 
     );
   }
-
+ 
   logout()
   {
 
     sessionStorage.clear();
     this.isLoggedIn=sessionStorage.getItem("loggedUserId");
     console.log(this.isLoggedIn);
+    location.replace("/");
     console.log("Logout...............");
   }
+
+  setComponentToshow(componentName : string)
+  {
+    
+    this.changeComponentService.assignComponent(componentName);
+    this.router.navigate(['/questionForm']);
+
+  }
+
+
 
 }

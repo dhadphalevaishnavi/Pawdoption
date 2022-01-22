@@ -36,4 +36,20 @@ export class PetService {
     return this.http.get(`${this.baseUrl}/searchPetByType/${sessionStorage.getItem("searchBarPetType")}` );
   }
 
+  searchPetByOwnerId():Observable<any>
+  {
+   
+    return this.http.get(`${this.baseUrl}/searchPetByOwnerId/${sessionStorage.getItem("loggedUserId")}` );
+  }
+
+  getWishList():Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/getWishList/${sessionStorage.getItem("loggedUserId")}`);
+  }
+
+  addwish(pet:Pet):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/addToWishList/${sessionStorage.getItem("loggedUserId")}` ,pet , {responseType:"text"});
+  }
+
 }
