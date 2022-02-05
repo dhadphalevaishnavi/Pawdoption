@@ -3,7 +3,7 @@ import { PetService } from 'src/app/Services/pet/pet.service';
 import { PassSearchResultService } from 'src/app/Services/passSearchResult/pass-search-result.service';
 import { Router } from '@angular/router';
 import { ChangeComponentService } from 'src/app/Services/changeComponent/change-component.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -54,11 +54,40 @@ export class NavbarComponent implements OnInit {
   logout()
   {
 
-    sessionStorage.clear();
-    this.isLoggedIn=sessionStorage.getItem("loggedUserId");
-    console.log(this.isLoggedIn);
-    location.replace("/");
-    console.log("Logout...............");
+    Swal.fire({
+      title: 'Logout?',
+      text: "Are you sure you want to logout?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Logout!'
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+
+        sessionStorage.clear();
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Logged out successfully!!!',
+          showConfirmButton: false,
+          timer: 1500
+        }).then((result) => {
+
+
+          //Go To HomePage
+          location.replace("/");
+          this.router.navigate(['']);
+
+
+        });
+
+
+      }//if
+    })//then
   }
 
   setComponentToshow(componentName : string)

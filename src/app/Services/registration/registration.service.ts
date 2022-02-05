@@ -39,4 +39,21 @@ export class RegistrationService {
     return this.http.put(`${this.baseUrl}/resetPassword`,loginData ,{responseType: 'text'});
   }
 
+  addInInterestedList(petData:Pet):Observable<any>
+  {
+    return this.http.put(`${this.baseUrl}/addInInterestedList/${petData.petId}/${sessionStorage.getItem('loggedUserId')}` ,{responseType : 'text'} );
+  }
+
+  findInterestedUsers(  ):Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/getInterestUsers/${sessionStorage.getItem("petId")}`);
+  }
+
+  rejectUserEnquery(user:RegistrationClass):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/deleteFromInterestedUser/${sessionStorage.getItem("petId")}`,user ,{responseType: 'text'});
+  }
+
+  
+
 }

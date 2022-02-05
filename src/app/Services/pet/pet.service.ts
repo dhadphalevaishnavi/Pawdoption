@@ -52,4 +52,15 @@ export class PetService {
     return this.http.post(`${this.baseUrl}/addToWishList/${sessionStorage.getItem("loggedUserId")}` ,pet , {responseType:"text"});
   }
 
+  removeWish(pet:Pet):Observable<any>
+  {
+    return this.http.delete(`${this.baseUrl}/removeFromWishList/${sessionStorage.getItem("loggedUserId")}/${pet.petId}`, {responseType:"text"});
+  }
+
+  deletePet(pet:Pet):Observable<any>
+  {
+    return this.http.delete(`${this.baseUrl}/deletePet/${pet.petId}`, {responseType:"text"});
+  }
+
+  
 }

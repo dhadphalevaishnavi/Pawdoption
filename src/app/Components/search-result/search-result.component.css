@@ -3,10 +3,10 @@
     
     margin-inline: 0px;
    
-    background-color:  rgba(146, 34, 34, 0.301);
-    
-    border-radius: 80px;
-    
+    /* background-color:  rgba(146, 34, 34, 0.301); */
+    background-color: #fafafa;
+    /* border-radius: 80px; */
+    border-radius: 10px;
 }
 
 .card-deck{
@@ -51,8 +51,8 @@
     height: 451px;
     width: 450px;
     align-self: center;
-    border-radius: 80px;
-        
+    /* border-radius: 80px; */
+    border-radius: 10px;
 }
 
 .pageContainer{

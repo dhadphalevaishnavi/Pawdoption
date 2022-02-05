@@ -3,6 +3,7 @@ import { PassRegistrationDataService } from 'src/app/Services/registration/pass-
 import { RegistrationClass } from 'src/app/Classes/registration/registration-class';
 import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/Services/registration/registration.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-verify-otp',
@@ -28,11 +29,13 @@ export class VerifyOTPComponent implements OnInit {
   register() {
 
     if (this.otpVar == this.otp) {
-      console.log("OTP Matched");
+      
       //check if forgot password?
-      if (sessionStorage.getItem("forgotPassword") == "true") {
+       if (sessionStorage.getItem("forgotPassword") == "true") {
 
+        sessionStorage.removeItem("forgotPassword");
         this.router.navigate(['/reset-Password']);
+      
 
       }
 
@@ -40,8 +43,17 @@ export class VerifyOTPComponent implements OnInit {
         //Register Into Database
         this.registrationService.RegisterNewUser(this.registrationClassObject).subscribe(
           data => {
-
-            this.router.navigate(['']);
+            
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Registered Successfully!!!',
+              showConfirmButton: false,
+              timer: 1500
+            }).then((Result=>{
+              this.router.navigate(['']);
+            }))
+          
           },
           error => {
             console.log("Something went wrong");
@@ -53,7 +65,15 @@ export class VerifyOTPComponent implements OnInit {
     }
 
     else{
-      console.log("otp not matched");
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Wrong OTP!!!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+     
     }
 
 

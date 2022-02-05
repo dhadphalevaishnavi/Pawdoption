@@ -1,6 +1,6 @@
 export class Pet {
     
-	petId:BigInteger;
+	petId:string;
 
     petType:String;
 	
@@ -19,4 +19,6 @@ export class Pet {
 	description:String;
 
 	petName:String;
+
+	status:String;
 }

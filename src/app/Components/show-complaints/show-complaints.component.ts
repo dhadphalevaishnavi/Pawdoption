@@ -3,6 +3,7 @@ import { Complaint } from 'src/app/Classes/complaint/complaint';
 import { ComplaintService } from 'src/app/Services/complaint/complaint.service';
 import { Router } from '@angular/router';
 import { ChangeComponentService } from 'src/app/Services/changeComponent/change-component.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -44,17 +45,47 @@ export class ShowComplaintsComponent implements OnInit {
 
   deleteComplaint(complaintObject : Complaint)
   { 
-    console.log(complaintObject);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "This complaint will be deleted permanently!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+          
     this.complaintService.deleteComplaint(complaintObject).subscribe(
       data=>{
-        console.log("deleted");
-        this.setComponentToshow('showMycomplaints');
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Complaint Deleted successfully!!!',
+          showConfirmButton: false,
+          timer: 1500
+        }).then((result)=> { 
+
+          this.setComponentToshow('showMycomplaints');        
+
+        });
+      
+       
     },
       error=>{
         console.log("Not deleted");
       }
     );
 
+
+      }
+
+    })
+
+ 
   }
 
   // showModelPopup(selectedComplaint : Complaint)

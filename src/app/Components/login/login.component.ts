@@ -6,6 +6,8 @@ import { RegistrationService } from 'src/app/Services/registration/registration.
 import { RegistrationClass } from 'src/app/Classes/registration/registration-class';
 import { PassRegistrationDataService } from 'src/app/Services/registration/pass-registration-data.service';
 import { LoginDataService } from 'src/app/Services/login/login-data.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,8 @@ export class LoginComponent implements OnInit {
 
   userLoginClassObject = new UserLogin();
   registrationData =new RegistrationClass();
+
+  isUserBlocked:boolean;
 
   public activateSpinner:boolean;
 
@@ -29,6 +33,36 @@ export class LoginComponent implements OnInit {
   loginForm()
   {
     this.activateSpinner=true;
+
+    if(this.userLoginClassObject.email == null || this.userLoginClassObject.password == null)
+    {
+      this.activateSpinner=false;
+      
+      Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Please fill all details.',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    }
+
+    else{
+
+    this.loginService.checkIfUserIsBlocked(this.userLoginClassObject.email).subscribe(
+      data=>{
+        this.isUserBlocked = data;
+      
+      },
+      error=>{ console.log("Something went wrong while checking if user is blacklisted"); }
+    );
+
+ 
+
+    if(this.isUserBlocked == false)
+    {
+
     this.loginService.loginUser(this.userLoginClassObject).subscribe(
       data=>{
 
@@ -38,17 +72,56 @@ export class LoginComponent implements OnInit {
          sessionStorage.setItem("loggedUserEmail" , data.email);
          sessionStorage.setItem("loggedUserId" , data.userId);
 
-         location.replace("/");
+
          this.activateSpinner=false;
-         //Go To HomePage
-         this.router.navigate(['']);
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Logged in successfully!!!',
+          showConfirmButton: false,
+          timer: 1500
+        }).then((result)=> { 
+
+ 
+            //Go To HomePage
+            location.replace("/");
+            this.router.navigate(['']);
+          
+
+        });
+      
+      
       }, 
       error=>{
-        console.log("Bad Credential");
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Bad Credentials!!!',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.activateSpinner=false;
     }
       
     );
+
+  }//userBlocked
+
+  else{
+    
+    this.activateSpinner=false;
+
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'This account is blocked by Admin!!!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+}
     
   }
 
@@ -57,9 +130,21 @@ export class LoginComponent implements OnInit {
   {
 
     this.activateSpinner=true;
+
+    this.loginService.checkIfUserIsBlocked(this.userLoginClassObject.email).subscribe(
+      data=>{
+        this.isUserBlocked = data;
+      
+      },
+      error=>{ console.log("Something went wrong while checking if user is blacklisted"); }
+    );
+
+ 
+
     if(this.userLoginClassObject.email != null)
     { 
-      
+      if(this.isUserBlocked == false)
+      {
       sessionStorage.setItem("forgotPassword" , "true");
       
       this.registrationService.sendOTP(this.registrationData).subscribe(
@@ -77,14 +162,39 @@ export class LoginComponent implements OnInit {
         }
   
        );
-      //this.router.navigate(['/verifyOtp']);
+      }//if
+
+      else{
+    
+        this.activateSpinner=false;
+    
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'This account is blocked by Admin!!!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }//else
+     
     }
 
     else{
-      console.log("enter email first");
-    }
-   
-  }
+
+      
+      Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Fill email-Id field. ',
+        showConfirmButton: false,
+        timer: 1500
+      })
+     
+    }//else
+  
+
+
+  }//forgot pwd function
 
 
 

@@ -28,7 +28,7 @@ export class ShowProfileComponent implements OnInit {
       }
     );
 
-  }
+  } 
 
 
   setComponentToshow(componentName : string)

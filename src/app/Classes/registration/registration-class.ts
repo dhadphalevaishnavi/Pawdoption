@@ -3,9 +3,9 @@
 export class RegistrationClass {
 
     username:String;
-    email:String;
+    email:string;
     password:String;
     password2:String;
-    
+    userId:string;
     
 }

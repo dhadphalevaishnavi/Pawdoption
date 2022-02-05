@@ -1,0 +1,111 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <h2 class="heading"> Interested Peoples </h2>
+
+  </div>
+</nav>
+
+<div class="container">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">index</th>
+        <th scope="col">User-Name</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userObject of user ;  index as i">
+        <td scope="row">{{i+1}}</td>
+        <td scope="row">{{userObject.username}}</td>
+        <td>{{userObject.email}}</td>
+        <td>
+          <div class="btn-dropdown">
+
+            <button class="btn btn-primary btn1" (click)="showProfile(userObject)" data-toggle="modal"
+              data-target="#profileModel">Show Profile </button>
+            <!-- Modal -->
+            <!-- <div *ngIf="showProfileModel == true"> -->
+              <div *ngIf="showProfileModel == true" class="modal fade" id="profileModel" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="exampleModalLongTitle">Profile</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+
+                
+
+                        <label class="h6"> City : {{userProfile.city}}</label> <br>
+                        <label class="h6"> Looking Pet for : {{userProfile.petIsFor}}</label> <br>
+                        <label class="h6"> Caregiver of pet is : {{userProfile.caregiver}}</label> <br>
+                        <label class="h6"> Someone Alergic to pet in family : {{userProfile.isAlargic}}</label> <br>
+                        <label class="h6"> Number of Pets owned before : {{userProfile.noOfPetsOwnedBefore}}</label>
+                        <br>
+                        <label class="h6"> Distance to Vet clinic : {{userProfile.vetDistance}}</label> <br>
+                        <label class="h6"> Willing to keep pet during day : {{userProfile.dayStaying}}</label> <br>
+                        <label class="h6"> Willing to keep pet during night : {{userProfile.nightStaying}}</label>
+                    
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- </div> -->
+
+
+
+            <button type="button" class="btn btn-primary btn2" data-toggle="modal" data-target="#exampleModalCenter">
+              Reject
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Reject Offer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    By clicking YES this Offer will be deleted.
+                    Are you sure you want to Reject this Offer ?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="rejectOffer(userObject)">Yes</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+
+
+
+
+
+</div>

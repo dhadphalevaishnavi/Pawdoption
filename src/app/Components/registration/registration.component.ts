@@ -3,6 +3,9 @@ import { RegistrationClass } from 'src/app/Classes/registration/registration-cla
 import { RegistrationService } from 'src/app/Services/registration/registration.service';
 import { PassRegistrationDataService } from 'src/app/Services/registration/pass-registration-data.service';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/Services/login/login.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-registration',
@@ -12,33 +15,89 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
 
    registrationData =new RegistrationClass();
+
+   public activateSpinner:boolean;
+   isUserBlocked:boolean;
  
  
- 
-  constructor(private registrationService:RegistrationService , private router:Router , private passData:PassRegistrationDataService) { }
+  constructor(private registrationService:RegistrationService,private loginService:LoginService  , private router:Router , private passData:PassRegistrationDataService) { }
 
   ngOnInit(): void {
+    this.activateSpinner=false;
+   
+   
   }
 
   sendOTPToUser()
   {
-    if(this.registrationData.password == this.registrationData.password2)
-    {
-      console.log("Correct Password");
-      this.registrationService.sendOTP(this.registrationData).subscribe(
-      data=>{
-       
-        this.passData.setOtp(data);
-        this.passData.setRegistrationClassObject(this.registrationData);
+    this.activateSpinner=true;
+  
 
-        this.router.navigate(['verifyOtp']);
+    if(this.registrationData.password != this.registrationData.password2 || this.registrationData.email == null || this.registrationData.password == null || this.registrationData.password2 == null || this.registrationData.username == null)
+    {
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Please fill all details correctly.',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      this.activateSpinner=false;
+    }
+
+   else
+   {
+
+    
+    this.loginService.checkIfUserIsBlocked(this.registrationData.email).subscribe(
+      data=>{
+        this.isUserBlocked = data;
+      
       },
-      error=>{
-        console.log("Something went wrong");
-      }
+      error=>{ console.log("Something went wrong while checking if user is blacklisted"); }
+    );
+
+
+    if(this.isUserBlocked == false)
+    {
+      this.registrationService.sendOTP(this.registrationData).subscribe(
+        data=>{
+        
+          this.passData.setOtp(data);
+          this.passData.setRegistrationClassObject(this.registrationData);
+
+          this.activateSpinner=false;
+          this.router.navigate(['verifyOtp']);
+        },
+        error=>{
+          this.activateSpinner=false;
+          console.log("Something went wrong");
+        }
 
      );
-   }
- }
+    
+    }//if
+  
+    else{
 
-}
+      this.activateSpinner=false;
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'This account is blocked by Admin!!!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    }//else
+
+  }//else
+
+
+  }//function
+
+
+}//class

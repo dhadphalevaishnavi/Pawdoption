@@ -25,6 +25,7 @@ import { ShowProfileComponent } from './Components/show-profile/show-profile.com
 import { WishListComponent } from './Components/wish-list/wish-list.component';
 import { ShowComplaintsComponent } from './Components/show-complaints/show-complaints.component';
 import { ShowMyAddedPetsComponent } from './Components/show-my-added-pets/show-my-added-pets.component';
+import { ShowInterestedUsersComponent } from './Components/show-interested-users/show-interested-users.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ShowMyAddedPetsComponent } from './Components/show-my-added-pets/show-m
     WishListComponent,
     ShowComplaintsComponent,
     ShowMyAddedPetsComponent,
+    ShowInterestedUsersComponent,
     
   ],
   imports: [

@@ -5,7 +5,7 @@ import { PassSearchResultService } from 'src/app/Services/passSearchResult/pass-
 import { RegistrationService } from 'src/app/Services/registration/registration.service';
 import { Router } from '@angular/router';
 import { ChangeComponentService } from 'src/app/Services/changeComponent/change-component.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -30,22 +30,48 @@ export class SearchResultComponent implements OnInit {
     this.totalRecords = this.passSearchResultService.getPetTotal();
 
     this.isLoggedIn = sessionStorage.getItem("loggedUserId");
- 
+    console.log(this.isLoggedIn);
   }
 
   sendEnquaryMail(selectedPet: Pet) { 
     if (sessionStorage.getItem("loggedUsername") != null) {
       this.emailService.sendProfileInfoMail(selectedPet).subscribe(
         data => {
-          console.log("Profile email sent");
+        
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Enquiry email sent!!!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+          this.emailService.addInInterestedList(selectedPet).subscribe(
+            data=>{      console.log(data);      },
+            error=>{      console.log(error);      }
+          );
+
         },
         error => {
-          console.log("Profile NOT SEND");
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Something went wrong!',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       );
     }
     else {
-      console.log("Login to send email");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'info',
+        title: 'Please login to send enquiry!!!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+     
     }
   }
 
@@ -57,7 +83,14 @@ export class SearchResultComponent implements OnInit {
     this.petService.addwish(selectedPet).subscribe(
       data=>{
 
-        console.log("Wish Added");
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Pet added to wish-list!!!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+       
       },
       error=>{
         console.log("Wish not Added");
@@ -68,6 +101,11 @@ export class SearchResultComponent implements OnInit {
   }
 
 
+  redirect()
+  {
+   
+    this.router.navigate(["/Login"]);
+  }
 
   setComponentToshow(componentName: string) {
 

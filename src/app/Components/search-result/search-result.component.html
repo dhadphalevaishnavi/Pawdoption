@@ -26,9 +26,60 @@
                 <li class="list-group-item list-item-one h6">City : {{petObject.petCity}}</li>
             </ul>
 
-            <div class="btn-dropdown">
-            <button class="btn btn-primary" (click)="sendEnquaryMail(petObject)" >Send Enquiery </button> 
+            <div class="btn-dropdown" >
+            <button class="btn btn-primary" *ngIf="isLoggedIn != null"  data-toggle="modal" data-target="#exampleModal" >Send Enquiery </button> 
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Send email</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    By sending Enquiery email your profile Information will be visible to pet owner.
+                    Are you sure you want to send Enquiery?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="sendEnquaryMail(petObject)">Share Profile</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                </div>
+              </div>
+            </div> 
+            
 
+            <button class="btn btn-primary" *ngIf="isLoggedIn == null" data-toggle="modal" data-target="#exampleModalCenter" >Send Enquiery </button> 
+    
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    You are not logged in.
+                    Please login to send Enquiery email...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                    (click)="redirect()">Login</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
             
             <span class="h2 dropdown" id="dropdownMenuButton" data-toggle="dropdown" style="cursor: pointer;" *ngIf="isLoggedIn != null">
                   ...
@@ -51,3 +102,4 @@
     <pagination-controls class="pagination pagination-lg" id="listing_pagination"   (pageChange)="page = $event"></pagination-controls>
 </div>
 <!-- style="width: 28rem;" -->
+

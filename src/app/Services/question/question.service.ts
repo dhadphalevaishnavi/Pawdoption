@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Question } from 'src/app/Classes/question/question';
 import { Observable } from 'rxjs';
+import { RegistrationClass } from 'src/app/Classes/registration/registration-class';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,12 @@ export class QuestionService {
   {
 
     return this.http.get(`${this.baseUrl}/findUserProfile/${sessionStorage.getItem("loggedUserId")}`);
+  }
+
+  searchUserProfile ( user : RegistrationClass):Observable<any>
+  {
+
+    return this.http.get(`${this.baseUrl}/findUserProfile/${user.userId}`);
   }
 
 }

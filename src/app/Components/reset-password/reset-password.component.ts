@@ -4,6 +4,7 @@ import { UserLogin } from 'src/app/Classes/login/user-login';
 import { RegistrationClass } from 'src/app/Classes/registration/registration-class';
 import { LoginDataService } from 'src/app/Services/login/login-data.service';
 import { RegistrationService } from 'src/app/Services/registration/registration.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reset-password',
@@ -22,26 +23,63 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPassword()
   {
-    if(this.password1 == this.password2)
+  
+    if(this.password1==null || this.password2==null )
     {
-      sessionStorage.setItem("resetPassword","false");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: "Password can not be null",
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    else if( this.password1 == this.password2)
+    {
+      // sessionStorage.setItem("resetPassword","false");
+     
+
       //Reset password in database
       this.loginDataService.setPassword(this.password2);
       this.registrationService.resetPassword(this.loginDataService).subscribe(
 
         data=>{
-          console.log("Passowrd Reset Successfully");
-          this.router.navigate(['/Login']);
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: "Password changed successfully!",
+            showConfirmButton: false,
+            timer: 1500
+          }).then((result=>{
+          
+            this.router.navigate(['/Login']);
+          }))
+         
         },
         error=>{
-          console.log("Password not reset");
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Something went wrong",
+            showConfirmButton: false,
+            timer: 1500
+          })
+          
         }
       );
        
     }
 
     else{
-      console.log("Password not matched")
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: "Password not matched",
+        showConfirmButton: false,
+        timer: 1500
+      })
+  
     }
 
   }

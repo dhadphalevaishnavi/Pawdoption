@@ -8,15 +8,19 @@ import { UserLogin } from 'src/app/Classes/login/user-login';
 })
 export class LoginService {
 
-  private baseUrl ='http://localhost:8080/PetAdoption/Login';
+  private baseUrl ='http://localhost:8080/PetAdoption';
 
   constructor(private http:HttpClient) {  }
 
   loginUser( userLoginClass:UserLogin):Observable<any>
   {
-     return this.http.post(`${this.baseUrl}`,userLoginClass);
+     return this.http.post(`${this.baseUrl}/Login`,userLoginClass);
   }
 
+  checkIfUserIsBlocked(email : string):Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/checkIfUserIsBlocked/${email}`);
+  }
 
 
 }
