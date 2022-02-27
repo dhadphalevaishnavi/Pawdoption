@@ -53,13 +53,8 @@ export class LoginComponent implements OnInit {
     this.loginService.checkIfUserIsBlocked(this.userLoginClassObject.email).subscribe(
       data=>{
         this.isUserBlocked = data;
-      
-      },
-      error=>{ console.log("Something went wrong while checking if user is blacklisted"); }
-    );
 
- 
-
+        
     if(this.isUserBlocked == false)
     {
 
@@ -71,8 +66,10 @@ export class LoginComponent implements OnInit {
          sessionStorage.setItem("loggedUsername" , data.username);
          sessionStorage.setItem("loggedUserEmail" , data.email);
          sessionStorage.setItem("loggedUserId" , data.userId);
+         sessionStorage.setItem("loggedUserRole" , data.role);
 
-
+         console.log(data);
+         console.log("USER ROLE",data.role);
          this.activateSpinner=false;
 
         Swal.fire({
@@ -121,6 +118,75 @@ export class LoginComponent implements OnInit {
       timer: 1500
     })
   }
+      
+      },
+      error=>{ console.log("Something went wrong while checking if user is blacklisted"); }
+    );
+
+ 
+
+  //   if(this.isUserBlocked == false)
+  //   {
+
+  //   this.loginService.loginUser(this.userLoginClassObject).subscribe(
+  //     data=>{
+
+  //       // Store User data in sessionStorage
+         
+  //        sessionStorage.setItem("loggedUsername" , data.username);
+  //        sessionStorage.setItem("loggedUserEmail" , data.email);
+  //        sessionStorage.setItem("loggedUserId" , data.userId);
+  //        sessionStorage.setItem("loggedUserRole" , data.role);
+
+  //        console.log("USER ROLE",data.role);
+  //        this.activateSpinner=false;
+
+  //       Swal.fire({
+  //         position: 'top-end',
+  //         icon: 'success',
+  //         title: 'Logged in successfully!!!',
+  //         showConfirmButton: false,
+  //         timer: 1500
+  //       }).then((result)=> { 
+
+ 
+  //           //Go To HomePage
+  //           location.replace("/");
+  //           this.router.navigate(['']);
+          
+
+  //       });
+      
+      
+  //     }, 
+  //     error=>{
+
+  //       Swal.fire({
+  //         position: 'top-end',
+  //         icon: 'error',
+  //         title: 'Bad Credentials!!!',
+  //         showConfirmButton: false,
+  //         timer: 1500
+  //       })
+  //       this.activateSpinner=false;
+  //   }
+      
+  //   );
+
+  // }//userBlocked
+
+  // else{
+    
+  //   this.activateSpinner=false;
+
+  //   Swal.fire({
+  //     position: 'top-end',
+  //     icon: 'error',
+  //     title: 'This account is blocked by Admin!!!',
+  //     showConfirmButton: false,
+  //     timer: 1500
+  //   })
+  // }
 }
     
   }

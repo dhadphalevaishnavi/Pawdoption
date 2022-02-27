@@ -10,7 +10,10 @@ import { SearchResultComponent } from './Components/search-result/search-result.
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { AddPetSidebarComponent } from './Components/add-pet-sidebar/add-pet-sidebar.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
-import { ComplaintComponent } from './Components/complaint/complaint.component';
+import { AdminSidebarComponent } from './Components/admin-sidebar/admin-sidebar.component';
+// import { ComplaintComponent } from './Components/complaint/complaint.component';
+import { UnsolvedComplaintsComponent } from './Components/unsolved-complaints/unsolved-complaints.component';
+import { ComplaintsByEmailComponent } from './Components/complaints-by-email/complaints-by-email.component';
 
 const routes: Routes = [
 
@@ -44,6 +47,11 @@ const routes: Routes = [
   },
 
   {
+    path:"adminDashboard",
+    component:AdminSidebarComponent
+  },
+
+  {
     path:"addPet",
     component:AddPetSidebarComponent
   },
@@ -59,9 +67,20 @@ const routes: Routes = [
   },
 
   {
-    path:'complaintForm',
-    component:ComplaintComponent
+    path:"showUnsolvedComplains",
+    component:UnsolvedComplaintsComponent
+  },
+
+  {
+    path:"complaintsByEmail",
+    component:ComplaintsByEmailComponent
   }
+
+
+  // {
+  //   path:'complaintForm',
+  //   component:ComplaintComponent
+  // }
 
 
 ];

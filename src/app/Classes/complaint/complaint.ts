@@ -4,5 +4,8 @@ export class Complaint {
     catagory:String;
     description:string;
     status:string; 
+	raisedByUserEmail:string;
+	raisedForUserEmail:string;
+   
 
 }

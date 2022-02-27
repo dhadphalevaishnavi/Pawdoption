@@ -46,6 +46,10 @@
               <a class="nav-link "data-toggle="collapse" data-target="#navbar-list-4" (click)="setComponentToshow('')" style="cursor: pointer;" >My Dashboard</a>
             </li> 
 
+            <li class="nav-item" *ngIf="isUserAdmin == true">
+              <a class="nav-link "data-toggle="collapse" data-target="#navbar-list-4" [routerLink]="['/adminDashboard']" style="cursor: pointer;" >Admin Dashboard</a>
+            </li> 
+
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" data-target="#navbar-list-4"  [routerLink]="['']" (click)="logout()">LogOut</a>
             </li> 

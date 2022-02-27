@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   public isLoggedIn:string | null ;
   
+  public isUserAdmin:boolean = false;
 
   constructor(private pet:PetService , private router:Router , private passSearchResultService:PassSearchResultService ,private changeComponentService:ChangeComponentService) {
     this.router.routeReuseStrategy.shouldReuseRoute= () =>false; 
@@ -27,6 +28,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = sessionStorage.getItem("loggedUserId"); 
+    if(sessionStorage.getItem("loggedUserRole") === "admin")
+      this.isUserAdmin = true;
   }
 
   searchPetByType()

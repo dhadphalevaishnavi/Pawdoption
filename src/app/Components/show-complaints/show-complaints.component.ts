@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { Complaint } from 'src/app/Classes/complaint/complaint';
 import { Complaint } from 'src/app/Classes/complaint/complaint';
 import { ComplaintService } from 'src/app/Services/complaint/complaint.service';
 import { Router } from '@angular/router';

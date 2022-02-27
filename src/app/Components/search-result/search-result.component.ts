@@ -107,7 +107,12 @@ export class SearchResultComponent implements OnInit {
     this.router.navigate(["/Login"]);
   }
 
-  setComponentToshow(componentName: string) {
+  setComponentToshow(componentName: string , selectedPet:Pet) {
+
+    if(componentName === "complaintsForm")
+    {
+      sessionStorage.setItem("complaintForPetId", selectedPet.petId);
+    }
 
     this.changeComponentService.assignComponent(componentName);
     this.router.navigate(['/questionForm']);

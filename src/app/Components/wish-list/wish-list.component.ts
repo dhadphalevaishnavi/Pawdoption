@@ -162,5 +162,17 @@ export class WishListComponent implements OnInit {
 
   }
 
+  setComponentToshow2(componentName: string , selectedPet:Pet) {
+
+    if(componentName === "complaintsForm")
+    {
+      sessionStorage.setItem("complaintForPetId", selectedPet.petId);
+    }
+
+    this.changeComponentService.assignComponent(componentName);
+    this.router.navigate(['/questionForm']);
+
+  }
+
 
 }

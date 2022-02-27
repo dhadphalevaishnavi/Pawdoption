@@ -14,7 +14,7 @@ export class ComplaintService {
 
   raiseComplaint(complaint:Complaint):Observable<any>
   {
-    return this.http.post(`${this.baseUrl}/raiseComplaint/${sessionStorage.getItem("loggedUserId")}`, complaint, {responseType: 'text'} );
+    return this.http.post(`${this.baseUrl}/raiseComplaint/${sessionStorage.getItem("loggedUserId")}/${sessionStorage.getItem("complaintForPetId")}`, complaint, {responseType: 'text'} );
   }
 
   getComplaints():Observable<any>
@@ -30,6 +30,36 @@ export class ComplaintService {
   editComplaint(complaint:Complaint):Observable<any>
   {
     return this.http.put(`${this.baseUrl}/editComplaint/${sessionStorage.getItem("editComplaintId")}`, complaint, {responseType: 'text'} );
+  }
+
+  getSolvedComplaints():Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/getSolvedComplaints`);
+  }
+
+  getUnsolvedComplaints():Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/getUnsolvedComplaints`);
+  }
+
+  blockAccount(email:string , compId:string):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/addUserToBlacklist/${email}/${compId}` , {responseType: 'text'});
+  }
+
+  unblockAccount(email:string):Observable<any>
+  {
+    return this.http.delete(`${this.baseUrl}/deleteUserFromBlacklist/${email}` , {responseType: 'text'});
+  }
+
+  getAllBlockedAccounts():Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/getAllBlacklistedUsers`);
+  }
+
+  getComplaintsFromEmail(email:string):Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/getComplaintsFromEmail/${email}`);
   }
 
 } 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { Complaint } from 'src/app/Classes/complaint/complaint';
 import { Complaint } from 'src/app/Classes/complaint/complaint';
 import { ComplaintService } from 'src/app/Services/complaint/complaint.service';
 import { Router } from '@angular/router';
@@ -43,8 +44,8 @@ export class ComplaintFormComponent implements OnInit {
         title: 'Are you sure?',
         text: "You want to file complaint?",
         icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        showCancelButton: true, 
+        confirmButtonColor: '#3085d6', 
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, file complaint!'
       }).then((result) => {
@@ -52,7 +53,7 @@ export class ComplaintFormComponent implements OnInit {
         if (result.isConfirmed) {
 
           /////////////NEW CPMPLAINT
-          if (this.edit == 'null') {
+          if (this.edit === 'null') {
             this.complaintService.raiseComplaint(this.complaint).subscribe(
               data => {
 
@@ -115,6 +116,7 @@ export class ComplaintFormComponent implements OnInit {
 
   setComponentToshow(componentName: string) {
 
+ 
     this.changeComponentService.assignComponent(componentName);
     this.router.navigate(['/questionForm']);
 

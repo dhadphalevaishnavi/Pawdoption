@@ -15,7 +15,7 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title h4">{{petObject.petName}}</h5>
+                <h5 class="card-title h4">{{petObject.petName}}</h5> 
                 <p class="card-text h6">{{petObject.description}}</p>
             </div>
             <ul class="list-group list-group-flush">
@@ -86,7 +86,7 @@
             </span>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" (click)="addNewWish(petObject)" style="cursor: pointer;">Add to Wish List</a>
-                  <a class="dropdown-item" (click)="setComponentToshow('complaintsForm')" style="cursor: pointer;">Raise a Complaint</a>
+                  <a class="dropdown-item" (click)="setComponentToshow('complaintsForm',petObject)" style="cursor: pointer;">Raise a Complaint</a>
                 </div>
             </div>   
            
