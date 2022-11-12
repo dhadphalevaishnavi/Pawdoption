@@ -21,7 +21,7 @@ public class EmailService {
 		
 		String emailFrom="bhubharogers@gmail.com";
 		
-		String password="e@t1fresh";
+		String password="jtmokvjkuvstxvbq"; //2 step verification App Password
 		
 		//Variable for gmail
 		String host="smtp.gmail.com";

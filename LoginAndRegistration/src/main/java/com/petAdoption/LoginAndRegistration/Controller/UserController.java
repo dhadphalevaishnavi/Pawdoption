@@ -77,12 +77,15 @@ public class UserController {
 	@PostMapping("/RegisterUser")
 	String addNewUser(@Valid @RequestBody UserLoginDTO newUser)
 	{
-		if(!blacklistService.checkIfUserIsBlacklisted(newUser.email))
-		{
-			userServ.saveUser(newUser);
-			return"New User Added";
-		}
-		return "This user is banned/Blacklisted";
+//		if(!blacklistService.checkIfUserIsBlacklisted(newUser.email))
+//		{
+//			userServ.saveUser(newUser);
+//			return"New User Added";
+//		}
+//		return "This user is banned/Blacklisted";
+		
+		userServ.saveUser(newUser);
+		return"New User Added";
 	}
 	
 	@DeleteMapping("/deleteUser/{userId}")
@@ -192,7 +195,7 @@ public class UserController {
 	@GetMapping("/checkIfUserIsBlocked/{email}")
 	boolean checkIfUserIsBlocked(@PathVariable String email)
 	{
-		return blacklistService.checkIfUserIsBlacklisted(email);
+		return blacklistService.checkIfUserIsBlacklisted(" "+email);
 	}
 	
 	@GetMapping("/getAllBlacklistedUsers")
