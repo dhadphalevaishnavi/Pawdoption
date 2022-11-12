@@ -1,0 +1,49 @@
+<div class="mainCard">
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Welcome!!! {{username}}</h3>
+            </div>
+    
+            <ul class="list-unstyled components">
+                <p> Admin Dashboard</p>
+
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">  Complaints</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a (click)="setComponentToshow('showSolvedComplains')" style="cursor: pointer;">  Solved Complaints</a>
+                        </li>
+        
+                        <li>
+                            <a (click)="setComponentToshow('showUnsolvedComplains')" style="cursor: pointer;">  Unsolved Complaints</a>
+                        </li>
+                       
+                    </ul>
+                </li>
+    
+                <li>
+                    <a (click)="setComponentToshow('showBlockedAccounts')" style="cursor: pointer;">  Blocked Accounts</a>
+                </li>
+             
+            </ul>
+    
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a (click)="logout()" style="cursor: pointer;" class="download">Logout</a> 
+                </li>
+    
+            </ul>
+        </nav>
+    
+        <!-- Page Content  -->
+        <div id="content">
+    
+           
+            <ng-container *ngComponentOutlet = "showComponent"></ng-container>
+     
+      
+        </div>
+    </div> 
+    </div>

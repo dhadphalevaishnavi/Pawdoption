@@ -49,17 +49,29 @@ export class RegistrationComponent implements OnInit {
 
    else
    {
-
     
     this.loginService.checkIfUserIsBlocked(this.registrationData.email).subscribe(
       data=>{
+       
         this.isUserBlocked = data;
-      
+             
       },
       error=>{ console.log("Something went wrong while checking if user is blacklisted"); }
     );
 
+    setTimeout(() => 
+    {
+      this.waitForCheckIfUserIsBlockedExecution();
+    },
+    1500);
 
+   }//else
+
+
+  }//function
+
+  waitForCheckIfUserIsBlockedExecution()
+  {
     if(this.isUserBlocked == false)
     {
       this.registrationService.sendOTP(this.registrationData).subscribe(
@@ -80,8 +92,9 @@ export class RegistrationComponent implements OnInit {
     
     }//if
   
-    else{
+    else if(this.isUserBlocked == true){
 
+     
       this.activateSpinner=false;
 
       Swal.fire({
@@ -94,10 +107,6 @@ export class RegistrationComponent implements OnInit {
 
     }//else
 
-  }//else
-
-
-  }//function
-
+  }
 
 }//class
