@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+  
+      <h2 class="heading"> Blocked Accounts </h2>
+  
+    </div>
+  </nav>
+  
+  <div class="container">
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">User Id</th>
+          <th>Email-Id</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let blocklistObject of blocklist">
+        <tr>
+          <td scope="row">{{blocklistObject.userId}}</td>
+          <td>{{blocklistObject.email}}</td>
+          <td>
+            <div class="btn-dropdown">
+  
+              <!-- <button class="btn btn-primary btn1" (click)="editComplaint(complaint)">Edit </button> -->
+  
+              <button type="button" class="btn btn-primary btn2" (click)="unblockAccount(blocklistObject.email)" >
+                Unblock Account
+              </button>
+  
+            </div>
+          </td>
+        </tr>
+  
+  
+      </tbody>
+    </table>
+  
+  
+  
+  
+  
+  </div>

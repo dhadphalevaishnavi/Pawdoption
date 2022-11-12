@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+  
+      <h2 class="heading"> Solved Complaints </h2>
+  
+    </div>
+  </nav>
+  
+  <div class="container">
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Comp.Id</th>
+          <th>Raised By</th>
+          <th>Raised For</th>
+          <th scope="col">Catagory</th>
+          <th scope="col">Description</th>
+          <th scope="col">Status</th>
+          <!-- <th scope="col">Action</th> -->
+        </tr>
+      </thead>
+      <tbody *ngFor="let complaint of complaints">
+        <tr>
+          <td scope="row">{{complaint.complaintId}}</td>
+          <td>{{complaint.raisedByUserEmail}}</td>
+          <td><a [routerLink]="['/complaintsByEmail']" role="button" (click)="showAllComplaintsOfUser(complaint.raisedForUserEmail)">{{complaint.raisedForUserEmail}}</a></td>
+          <td>{{complaint.catagory}}</td>
+          <td>{{complaint.description}}</td>
+          <td>{{complaint.status}}</td>
+          <!-- <td>
+            <div class="btn-dropdown"> 
+
+  
+              <button type="button" class="btn btn-primary btn2" (click)="unblockAccount(complaint.raisedForUserEmail)" >
+                Unblock Account
+              </button>
+  
+            </div>
+          </td> -->
+        </tr>
+  
+  
+      </tbody>
+    </table>
+  
+  
+  
+  
+  
+  </div>
